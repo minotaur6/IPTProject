@@ -133,8 +133,18 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Attendance\Attendance.cs" />
+    <Compile Include="Models\Attendance\Batch.cs" />
+    <Compile Include="Models\Attendance\Course.cs" />
     <Compile Include="Models\Attendance\CourseEnrollment.cs" />
+    <Compile Include="Models\Attendance\CourseFaculty.cs" />
+    <Compile Include="Models\Attendance\CourseOffered.cs" />
+    <Compile Include="Models\Attendance\Department.cs" />
+    <Compile Include="Models\Attendance\Designation.cs" />
+    <Compile Include="Models\Attendance\Employee.cs" />
     <Compile Include="Models\Attendance\FacultySections.cs" />
+    <Compile Include="Models\Attendance\Section.cs" />
+    <Compile Include="Models\Attendance\Semester.cs" />
+    <Compile Include="Models\Attendance\Student.cs" />
     <Compile Include="Models\Cafeteria\FoodItem.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
