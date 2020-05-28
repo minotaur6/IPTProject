@@ -42,5 +42,8 @@ namespace IptProject.Controllers
                     }
                 }
             }
-            
-            return View(l\
+
+            return View();
+        }
+    }
+}

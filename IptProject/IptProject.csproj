@@ -125,6 +125,8 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\Attendance\AttendanceStudentController.cs" />
+    <Compile Include="Controllers\Attendance\AttendanceTeacherController.cs" />
     <Compile Include="Controllers\Cafeteria\CafeteriaController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
@@ -399,6 +401,8 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Shared\_PortalLayout.cshtml" />
     <Content Include="Views\Cafeteria\GetProduct.cshtml" />
+    <Content Include="Views\AttendanceStudent\ViewAttendance.cshtml" />
+    <Content Include="Views\AttendanceTeacher\MarkAttendance.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
