@@ -17,6 +17,14 @@ namespace IptProject.Controllers.Attendance
             {
                 client.BaseAddress = new Uri("https://localhost:44380/api/");
                 //HTTP GET
+
+
+
+
+
+
+
+
                 //var responseTask = client.GetAsync("attendance/get");
                 //responseTask.Wait();
 
