@@ -139,6 +139,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Attendance\AllStudentCourses.cs" />
     <Compile Include="Models\Attendance\Attendance.cs" />
     <Compile Include="Models\Attendance\Batch.cs" />
     <Compile Include="Models\Attendance\Course.cs" />
@@ -152,6 +153,7 @@
     <Compile Include="Models\Attendance\Section.cs" />
     <Compile Include="Models\Attendance\Semester.cs" />
     <Compile Include="Models\Attendance\Student.cs" />
+    <Compile Include="Models\Attendance\StudentCourseAttendance.cs" />
     <Compile Include="Models\Cafeteria\FoodItem.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
