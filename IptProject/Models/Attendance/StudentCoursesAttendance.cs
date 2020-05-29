@@ -5,11 +5,12 @@ using System.Web;
 
 namespace IptProject.Models.Attendance
 {
-    public class StudentCourseAttendance
+    public class StudentCoursesAttendance
     {
         public int AttendanceID { get; set; }
         public DateTime AttendanceDate { get; set; }
         public string AttendanceStatus { get; set; }
+        public int ClassDuration { get; set; }
         public int StudentID { get; set; }
         public string RollNumber { get; set; }
         public string SName { get; set; }
