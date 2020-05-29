@@ -1,10 +1,12 @@
-﻿@model IList<IptProject.Models.Attendance.AllStudentCourses>
+﻿@*@model IList<IptProject.Models.Attendance.CheckStudentAttendance>*@
+@using IptProject.Models.Attendance
+@model CoursesVM
 
 @{
     ViewBag.Title = "ViewAttendance";
     Layout = "~/Views/Shared/_PortalLayout.cshtml";
 }
- 
+
 <h2>View Attendance</h2>
 <div class="content">
     <div class="container-fluid">
@@ -20,20 +22,20 @@
                                 <!--<h2 class="nav-tabs-title center-block"><b>Courses:</b></h2>-->
                                 <ul class="nav nav-tabs" data-tabs="tabs">
 
-                                   @foreach (var item in Model)
+                                    @foreach (var item in Model.allStudentCourses)
                                     {
                                         if (item.CourseStatus != "DROP")
                                         {
                                             <li class="nav-item">
-                                                <a class="nav-link active" href="#profile" data-toggle="tab">
-                                                    <i class="material-icons">menu_book</i> @item.CourseName
+                                                <a class="nav-link active" href="#" data-toggle="tab">
+                                                    <i class="material-icons">menu_book</i>@item.CourseID + @item.CourseCode + @item.CourseName 
                                                     <div class="ripple-container"></div>
                                                 </a>
                                                 <p> </p>
                                             </li>
-                                            
+
                                         }
-                                        
+
                                     }
                                 </ul>
                             </div>
@@ -53,33 +55,32 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
-                                            <td>1</td>
-                                            <td>1-June-2020</td>
-                                            <td>1</td>
-                                            <td>P</td>
-                                        </tr>
-                                        <tr>
-                                            <td>2</td>
-                                            <td>2-June-2020</td>
-                                            <td>1</td>
-                                            <td>P</td>
-                                        </tr>
-                                        <tr>
-                                            <td>3</td>
-                                            <td>3-June-2020</td>
-                                            <td>1</td>
-                                            <td class="text-danger">A</td>
-                                        </tr>
-                                        <tr>
-                                            <td>4</td>
-                                            <td>4-June-2020</td>
-                                            <td>1</td>
-                                            <td>P</td>
-                                        </tr>
+                                        @foreach (var item in Model.studentcourseattendances)
+                                        {
+                                            int i = 1;
+                                            <tr>
+                                                <td>
+                                                   
+                                                </td>
+                                                <td>
+                                                        @Html.DisplayFor(modelItem => item.AttendanceDate)
+                                                    </td>
+                                                    <td>
+                                                        @Html.DisplayFor(modelItem => item.AttendanceStatus)
+                                                    </td>
+                                                @*<td>
+                                                        @Html.DisplayFor(modelItem => item.ClassDuration)
+                                                    </td>*@
+                                            </tr>
+                                           
+
+                                        }
+
                                     </tbody>
                                 </table>
                             </div>
+
+
                             <div class="tab-pane table-responsive" id="messages">
                                 <table class="table table-hover table-bordered">
                                     <thead class="card-header card-header-primary">
@@ -161,7 +162,7 @@
                 </div>
             </div>
 
-            }
+
         </div>
     </div>
 </div>

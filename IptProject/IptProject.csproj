@@ -142,10 +142,12 @@
     <Compile Include="Models\Attendance\AllStudentCourses.cs" />
     <Compile Include="Models\Attendance\Attendance.cs" />
     <Compile Include="Models\Attendance\Batch.cs" />
+    <Compile Include="Models\Attendance\CheckStudentAttendance.cs" />
     <Compile Include="Models\Attendance\Course.cs" />
     <Compile Include="Models\Attendance\CourseEnrollment.cs" />
     <Compile Include="Models\Attendance\CourseFaculty.cs" />
     <Compile Include="Models\Attendance\CourseOffered.cs" />
+    <Compile Include="Models\Attendance\CoursesVM.cs" />
     <Compile Include="Models\Attendance\Department.cs" />
     <Compile Include="Models\Attendance\Designation.cs" />
     <Compile Include="Models\Attendance\Employee.cs" />

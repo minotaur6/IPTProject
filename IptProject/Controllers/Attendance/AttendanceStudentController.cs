@@ -17,12 +17,14 @@ namespace IptProject.Controllers.Attendance
         public async Task<ActionResult> ViewAttendance()
         {
             List<AllStudentCourses> checkAttendance = new List<AllStudentCourses>();
+            List<StudentCourseAttendance> studentCourseAttendances= new List<StudentCourseAttendance>();
 
             //StudentCourseAttendance studentCourseAttendance = new StudentCourseAttendance();
-            //CoursesVM courseVM = new CoursesVM();
+            CoursesVM courseVM = new CoursesVM();
             using (var client = new HttpClient())
             {
                 int studentId = 10;
+                int courseid = 27; //pass student's course id
 
                 client.BaseAddress = new Uri("https://localhost:44380/api/");
                 client.DefaultRequestHeaders.Clear();
@@ -30,18 +32,38 @@ namespace IptProject.Controllers.Attendance
 
                 //HTTP GET
                 HttpResponseMessage result = await client.GetAsync("AttendanceStudent/GetStudentCourse/" + studentId);
-             
+                HttpResponseMessage result2 = await client.GetAsync("AttendanceStudent/GetStudentAttendance/" + courseid);
+   
+
+
                 if (result.IsSuccessStatusCode)
                 {
                     var response = result.Content.ReadAsStringAsync().Result;
+                   // var re = r.Content.ReadAsStringAsync().Result;
                     checkAttendance = JsonConvert.DeserializeObject<List<AllStudentCourses>>(response);
                                    
                 }
-                //courseVM.allStudentCourses = checkAttendance;
+
+                if (result2.IsSuccessStatusCode)
+                {
+                    var response = result2.Content.ReadAsStringAsync().Result;
+                    // var re = r.Content.ReadAsStringAsync().Result;
+                    studentCourseAttendances = JsonConvert.DeserializeObject<List<StudentCourseAttendance>>(response);
+
+                }
+                courseVM.allStudentCourses = checkAttendance;
+                courseVM.studentcourseattendances = studentCourseAttendances;
                 //studentCourseAttendance.CourseCode = checkAttendance;
 
-                return View(checkAttendance);
+                return View(courseVM);
+                
             }
+
+           
+
+
+
+
         }
     }
 }
