@@ -1,8 +1,11 @@
 ﻿using IptProject.Models.Attendance;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
+using System.Net.Http.Headers;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 
@@ -11,35 +14,33 @@ namespace IptProject.Controllers.Attendance
     public class AttendanceStudentController : Controller
     {
         // GET: AttendanceStudent
-        public ActionResult ViewAttendance()
+        public async Task<ActionResult> ViewAttendance()
         {
-            List<StudentCourseAttendance> checkAttendance = new List<StudentCourseAttendance>();
+            List<AllStudentCourses> checkAttendance = new List<AllStudentCourses>();
+
+            //StudentCourseAttendance studentCourseAttendance = new StudentCourseAttendance();
+            CoursesVM courseVM = new CoursesVM();
             using (var client = new HttpClient())
             {
-                client.BaseAddress = new Uri("https://localhost:44380/api/");
-                //HTTP GET
                 int studentId = 10;
-                var responseTask = client.GetAsync("AttendanceStudent/ViewAttendance/" + studentId);
-                responseTask.Wait();
 
-                var result = responseTask.Result;
+                client.BaseAddress = new Uri("https://localhost:44380/api/");
+                client.DefaultRequestHeaders.Clear();
+                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+
+                //HTTP GET
+                HttpResponseMessage result = await client.GetAsync("AttendanceStudent/GetStudentCourse/" + studentId);
+             
                 if (result.IsSuccessStatusCode)
                 {
-                    var readTask = result.Content.ReadAsAsync<StudentCourseAttendance[]>();
-                    readTask.Wait();
-
-                    var studentAttendance = readTask.Result;
-                    foreach (var stud in studentAttendance)
-                    {
-                        checkAttendance.Add(stud);
-                    }
-
-                    //var fooditems = readTask.Result;
-
-                    //}
+                    var response = result.Content.ReadAsStringAsync().Result;
+                    checkAttendance = JsonConvert.DeserializeObject<List<AllStudentCourses>>(response);
+                                   
                 }
+                courseVM.allStudentCourses = checkAttendance;
+                //studentCourseAttendance.CourseCode = checkAttendance;
 
-                return View(checkAttendance);
+                return View(courseVM);
             }
         }
     }

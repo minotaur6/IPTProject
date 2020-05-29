@@ -1,10 +1,11 @@
-﻿@model List<IptProject.Models.Attendance.StudentCourseAttendance>
+﻿@using IptProject.Models.Attendance
+@model CoursesVM
 
 @{
     ViewBag.Title = "ViewAttendance";
     Layout = "~/Views/Shared/_PortalLayout.cshtml";
 }
-
+ 
 <h2>View Attendance</h2>
 <div class="content">
     <div class="container-fluid">
@@ -20,14 +21,20 @@
                                 <!--<h2 class="nav-tabs-title center-block"><b>Courses:</b></h2>-->
                                 <ul class="nav nav-tabs" data-tabs="tabs">
 
-                                    @foreach (var item in Model.StudentCourseAttendance)
+                                   @foreach (var item in Model.allStudentCourses)
                                     {
-                                        <li class="nav-item">
-                                            <a class="nav-link active" href="#profile" data-toggle="tab">
-                                                <i class="material-icons">menu_book</i> @item.CourseCode
-                                                <div class="ripple-container"></div>
-                                            </a>
-                                        </li>
+                                        if (item.CourseStatus != "DROP")
+                                        {
+                                            <li class="nav-item">
+                                                <a class="nav-link active" href="#profile" data-toggle="tab">
+                                                    <i class="material-icons">menu_book</i> @item.CourseName
+                                                    <div class="ripple-container"></div>
+                                                </a>
+                                                <p> </p>
+                                            </li>
+                                            
+                                        }
+                                        
                                     }
                                 </ul>
                             </div>
