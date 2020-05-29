@@ -19,7 +19,7 @@ namespace IptProject.Controllers.Attendance
             List<AllStudentCourses> checkAttendance = new List<AllStudentCourses>();
 
             //StudentCourseAttendance studentCourseAttendance = new StudentCourseAttendance();
-            CoursesVM courseVM = new CoursesVM();
+            //CoursesVM courseVM = new CoursesVM();
             using (var client = new HttpClient())
             {
                 int studentId = 10;
