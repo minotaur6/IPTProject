@@ -1,5 +1,4 @@
-﻿@using IptProject.Models.Attendance
-@model CoursesVM
+﻿@model IList<IptProject.Models.Attendance.AllStudentCourses>
 
 @{
     ViewBag.Title = "ViewAttendance";
@@ -21,7 +20,7 @@
                                 <!--<h2 class="nav-tabs-title center-block"><b>Courses:</b></h2>-->
                                 <ul class="nav nav-tabs" data-tabs="tabs">
 
-                                   @foreach (var item in Model.allStudentCourses)
+                                   @foreach (var item in Model)
                                     {
                                         if (item.CourseStatus != "DROP")
                                         {

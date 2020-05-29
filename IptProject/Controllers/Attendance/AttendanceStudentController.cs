@@ -37,10 +37,10 @@ namespace IptProject.Controllers.Attendance
                     checkAttendance = JsonConvert.DeserializeObject<List<AllStudentCourses>>(response);
                                    
                 }
-                courseVM.allStudentCourses = checkAttendance;
+                //courseVM.allStudentCourses = checkAttendance;
                 //studentCourseAttendance.CourseCode = checkAttendance;
 
-                return View(courseVM);
+                return View(checkAttendance);
             }
         }
     }
