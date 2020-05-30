@@ -10,6 +10,7 @@ namespace IptProject.Models.Attendance
         public int AttendanceID { get; set; }
         public DateTime AttendanceDate { get; set; }
         public string AttendanceStatus { get; set; }
+        public int EnrollmentID { get; set; }
         public int ClassDuration { get; set; }
         public int StudentID { get; set; }
         public string SName { get; set; }
