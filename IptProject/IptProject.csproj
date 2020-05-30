@@ -156,6 +156,7 @@
     <Compile Include="Models\Attendance\Semester.cs" />
     <Compile Include="Models\Attendance\Student.cs" />
     <Compile Include="Models\Attendance\StudentCoursesAttendance.cs" />
+    <Compile Include="Models\Attendance\TeacherAttendanceDetails.cs" />
     <Compile Include="Models\Cafeteria\FoodItem.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
