@@ -9,6 +9,6 @@ namespace IptProject.Models.Attendance
     {
         public List<AllStudentCourses> allStudentCourses { get; set; }
 
-        public List<StudentCourseAttendance> studentcourseattendances { get; set; }
+        public List<StudentCoursesAttendance> studentcourseattendances { get; set; }
     }
 }
