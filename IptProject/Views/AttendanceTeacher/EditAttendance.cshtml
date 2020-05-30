@@ -1,11 +1,10 @@
-﻿@using IptProject.Models.Attendance
-@model CoursesVM
-@{
-    ViewBag.Title = "MarkAttendance";
+﻿@{
+    ViewBag.Title = "EditAttendance";
     Layout = "~/Views/Shared/_PortalLayout.cshtml";
 }
 
-<h2>Mark Attendance</h2>
+<h2>EditAttendance</h2>
+
 <div class="content">
     <div class="container-fluid">
         <div class="row">
@@ -27,8 +26,8 @@
                                     <div class="form-group">
                                         <label>Offered Courses</label>
                                         <select class="form-control bootstrap-select ">
-                                            <option>CS423-Information Processing Techniques</option>
-                                            <option>CS423-Information Processing Techniques</option>
+                                            <option disabled>CS423-Information Processing Techniques</option>
+                                            <option disabled>CS423-Information Processing Techniques</option>
                                         </select>
                                     </div>
                                 </div>
@@ -38,8 +37,8 @@
                                     <div class="form-group">
                                         <label>Campus</label>
                                         <select class="form-control">
-                                            <option>Karachi</option>
-                                            <option>Islamabad</option>
+                                            <option disabled>Karachi</option>
+                                            <option disabled>Islamabad</option>
                                         </select>
                                     </div>
                                 </div>
@@ -47,8 +46,8 @@
                                     <div class="form-group">
                                         <label>Semester</label>
                                         <select class="form-control">
-                                            <option>Spring 2020</option>
-                                            <option>Fall 2019</option>
+                                            <option disabled>Spring 2020</option>
+                                            <option disabled>Fall 2019</option>
                                         </select>
                                     </div>
                                 </div>
@@ -56,8 +55,8 @@
                                     <div class="form-group">
                                         <label>Section</label>
                                         <select class="form-control ">
-                                            <option>BSCS-8A</option>
-                                            <option>BSCE-8B</option>
+                                            <option disabled>BSCS-8A</option>
+                                            <option disabled>BSCE-8B</option>
                                         </select>
                                     </div>
                                 </div>
@@ -65,9 +64,8 @@
 
                             <div class="row">
                                 <div class="col-md-12 ">
-
-                                    <button type="submit" class="btn btn-success pull-right">Add New</button>
-                                    <button type="submit" class="btn btn-danger pull-right">Edit</button>
+                                    <button type="submit" class="btn btn-success pull-right">Save</button>
+                                    <button type="submit" class="btn btn-danger pull-right">Delete</button>
                                 </div>
                             </div>
                             @*
@@ -100,6 +98,7 @@
                                             </tr>
                                         </thead>
                                         <tbody>
+
                                             <tr>
                                                 <td>1</td>
                                                 <td>k16-3864</td>

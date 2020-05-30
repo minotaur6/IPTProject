@@ -13,5 +13,15 @@ namespace IptProject.Controllers.Attendance
         {
             return View();
         }
+
+        public ActionResult AddAttendance()
+        {
+            return View();
+        }
+
+        public ActionResult EditAttendance()
+        {
+            return View();
+        }
     }
 }
