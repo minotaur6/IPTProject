@@ -17,7 +17,7 @@ namespace IptProject.Controllers.Attendance
         public async Task<ActionResult> ViewAttendance()
         {
             List<AllStudentCourses> checkAttendance = new List<AllStudentCourses>();
-            List<StudentCoursesAttendance> studentCourseAttendances= new List<StudentCoursesAttendance>();
+            List<StudentCoursesAttendance> studentCourseAttendances = new List<StudentCoursesAttendance>();
 
             //StudentCourseAttendance studentCourseAttendance = new StudentCourseAttendance();
             CoursesVM courseVM = new CoursesVM();
@@ -34,15 +34,11 @@ namespace IptProject.Controllers.Attendance
                 HttpResponseMessage result = await client.GetAsync("AttendanceStudent/GetStudentCourse/" + studentId);
                 HttpResponseMessage result2 = await client.GetAsync("AttendanceStudent/GetStudentAttendance/" + courseid);
 
-   
-
-
                 if (result.IsSuccessStatusCode)
                 {
                     var response = result.Content.ReadAsStringAsync().Result;
-                   // var re = r.Content.ReadAsStringAsync().Result;
+                    // var re = r.Content.ReadAsStringAsync().Result;
                     checkAttendance = JsonConvert.DeserializeObject<List<AllStudentCourses>>(response);
-                                   
                 }
 
                 if (result2.IsSuccessStatusCode)
@@ -50,21 +46,13 @@ namespace IptProject.Controllers.Attendance
                     var response = result2.Content.ReadAsStringAsync().Result;
                     // var re = r.Content.ReadAsStringAsync().Result;
                     studentCourseAttendances = JsonConvert.DeserializeObject<List<StudentCoursesAttendance>>(response);
-
                 }
                 courseVM.allStudentCourses = checkAttendance;
                 courseVM.studentcourseattendances = studentCourseAttendances;
                 //studentCourseAttendance.CourseCode = checkAttendance;
 
                 return View(courseVM);
-                
             }
-
-           
-
-
-
-
         }
     }
 }

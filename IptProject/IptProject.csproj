@@ -427,6 +427,8 @@
     <Content Include="Views\Cafeteria\GetProduct.cshtml" />
     <Content Include="Views\AttendanceStudent\ViewAttendance.cshtml" />
     <Content Include="Views\AttendanceTeacher\MarkAttendance.cshtml" />
+    <Content Include="Views\AttendanceTeacher\AddAttendance.cshtml" />
+    <Content Include="Views\AttendanceTeacher\EditAttendance.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
