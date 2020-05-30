@@ -27,8 +27,9 @@
                                         if (item.CourseStatus != "DROP")
                                         {
                                             <li class="nav-item">
-                                                <a class="nav-link active" href="#" data-toggle="tab">
-                                                    <i class="material-icons">menu_book</i>@item.CourseID + @item.CourseCode + @item.CourseName 
+                                                <a class="nav-link active" href="#profile" data-toggle="tab">
+                                              
+                                                    <i class="material-icons">menu_book</i> @item.CourseCode @item.CourseName
                                                     <div class="ripple-container"></div>
                                                 </a>
                                                 <p> </p>
@@ -57,22 +58,25 @@
                                     <tbody>
                                         @foreach (var item in Model.studentcourseattendances)
                                         {
-                                            int i = 1;
-                                            <tr>
-                                                <td>
-                                                   
-                                                </td>
-                                                <td>
+                                            int i;
+                                            @*@for (int i = 0; i < Model.Count(); i++)*@
+                                            {
+                                                <tr>
+                                                    <td>
+                                                        
+                                                    </td>
+                                                    <td>
                                                         @Html.DisplayFor(modelItem => item.AttendanceDate)
+                                                    </td>
+                                                    <td>
+                                                        @Html.DisplayFor(modelItem => item.ClassDuration)
                                                     </td>
                                                     <td>
                                                         @Html.DisplayFor(modelItem => item.AttendanceStatus)
                                                     </td>
-                                                @*<td>
-                                                        @Html.DisplayFor(modelItem => item.ClassDuration)
-                                                    </td>*@
-                                            </tr>
-                                           
+
+                                                </tr>
+                                            }
 
                                         }
 
