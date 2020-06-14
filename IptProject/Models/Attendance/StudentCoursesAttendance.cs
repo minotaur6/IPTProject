@@ -8,6 +8,7 @@ namespace IptProject.Models.Attendance
     public class StudentCoursesAttendance
     {
         public int AttendanceID { get; set; }
+
         public DateTime AttendanceDate { get; set; }
         public string AttendanceStatus { get; set; }
         public int ClassDuration { get; set; }
@@ -17,6 +18,5 @@ namespace IptProject.Models.Attendance
         public int CourseID { get; set; }
         public string CourseCode { get; set; }
         public string CourseName { get; set; }
-
     }
 }
