@@ -1,19 +1,66 @@
-﻿using System;
+﻿using IptProject.Models.Attendance;
+using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Web;
 using System.Web.Mvc;
+
 
 namespace IptProject.Controllers.Attendance
 {
     public class AttendanceTeacherController : Controller
     {
         // GET: AttendanceTeacher
-        public ActionResult MarkAttendance()
+        public async System.Threading.Tasks.Task<ActionResult> MarkAttendance()
         {
+            List<Course> courses = new List<Course>();
+            List<Section> sections = new List<Section>();
+            List<Semester> semesters = new List<Semester>();
+            
+
+            //StudentCourseAttendance studentCourseAttendance = new StudentCourseAttendance();
+            MarkAttendanceVM markAttendanceVM = new MarkAttendanceVM();
 
 
-            return View();
+            using (var client = new HttpClient())
+            {
+                int empId = 11; // teacher login id
+                //int courseid = 7; //pass student's course id
+
+                client.BaseAddress = new Uri("https://localhost:44380/api/");
+                client.DefaultRequestHeaders.Clear();
+                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+
+                //HTTP GET
+                HttpResponseMessage result = await client.GetAsync("AttendanceTeacher/GetTeacherCourses/" + empId);
+
+                //HttpResponseMessage result2 = await client.GetAsync("AttendanceStudent/GetStudentAttendance/" + courseid);
+
+                if (result.IsSuccessStatusCode)
+                {
+                    var response = result.Content.ReadAsStringAsync().Result;                   
+                    courses = JsonConvert.DeserializeObject<List<Course>>(response);
+                }
+
+                /*if (result2.IsSuccessStatusCode)
+                {
+                    var response = result2.Content.ReadAsStringAsync().Result;
+                    // var re = r.Content.ReadAsStringAsync().Result;
+                    studentCourseAttendances = JsonConvert.DeserializeObject<List<StudentCoursesAttendance>>(response);
+                }*/
+
+                markAttendanceVM.courses = courses;
+                //courseVM.studentcourseattendances = studentCourseAttendances;
+                //studentCourseAttendance.CourseCode = checkAttendance;
+
+                return View(markAttendanceVM);
+            }
+
+
+       
         }
 
         public ActionResult AddAttendance()
@@ -28,5 +75,10 @@ namespace IptProject.Controllers.Attendance
         {
             return View();
         }
+
+        /*public void Delete DeleteAttendance()
+        {
+            
+        }*/
     }
 }

@@ -1,5 +1,6 @@
 ﻿@using IptProject.Models.Attendance
-@model CoursesVM
+@model MarkAttendanceVM
+
 @{
     ViewBag.Title = "MarkAttendance";
     Layout = "~/Views/Shared/_PortalLayout.cshtml";
@@ -26,9 +27,17 @@
                                 <div class="col-md-8">
                                     <div class="form-group">
                                         <label>Offered Courses</label>
-                                        <select class="form-control bootstrap-select ">
-                                            <option>CS423-Information Processing Techniques</option>
-                                            <option>CS423-Information Processing Techniques</option>
+                                        <select class="form-control bootstrap-select " id="courseSelected">
+                                            <option selected hidden disabled >Select Course</option>
+                                            @foreach (var item in Model.courses)
+                                            {
+                                                if (item.CourseID != 0)
+                                                {
+                                                    <option value="@item.CourseID">@item.CourseCode - @item.CourseName</option>
+
+                                                }
+
+                                            }
                                         </select>
                                     </div>
                                 </div>
@@ -56,8 +65,16 @@
                                     <div class="form-group">
                                         <label>Section</label>
                                         <select class="form-control ">
-                                            <option>BSCS-8A</option>
-                                            <option>BSCE-8B</option>
+                                            <option selected hidden disabled>Select Section</option>
+                                            @foreach (var item in Model.sections)
+                                             {
+                                                if (item.SectionID != 0)
+                                                {
+                                                    <option value="@item.SectionID">@item.SectionName</option>
+
+                                                }
+
+                                             }
                                         </select>
                                     </div>
                                 </div>
