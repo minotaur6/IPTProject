@@ -2,11 +2,11 @@
 @model CoursesVM
 
 @{
-    ViewBag.Title = "Add `Attendance";
+    ViewBag.Title = "AddAttendance";
     Layout = "~/Views/Shared/_PortalLayout.cshtml";
 }
 
-<h2>AddAttendance</h2>
+<h2>Add Attendance</h2>
 
 <div class="content">
     <div class="container-fluid">
@@ -18,7 +18,9 @@
                     </div>
                     <div class="card-body">
                         <form>
+
                             <div class="row">
+
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label>Teacher Name</label>
@@ -31,6 +33,7 @@
                                         <input class="form-control" type="text" placeholder="Offered Courses" disabled>                                       
                                     </div>
                                 </div>
+
                             </div>
 
                             <div class="row">
@@ -55,15 +58,18 @@
                                         <input class="form-control" type="text" placeholder="Section" disabled>                                        
                                     </div>
                                 </div>
+
                             </div>
 
                             <div class="row">
+
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label>Date</label>
                                         <input class="form-control" type="date">
                                     </div>
                                 </div>
+                                
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label>Duration</label>                                    
@@ -74,14 +80,18 @@
                                         </select>
                                     </div>
                                 </div>
+                            
                             </div>
 
                             <div class="row">
+
                                 <div class="col-md-12 ">
                                     <button type="submit" class="btn btn-success pull-right">Save</button>                                                                      
                                 </div>
+
                             </div>
                             @*
+
         <div class="row">
             <div class="col-md-12">
                 <div class="alert alert-info">
@@ -102,6 +112,7 @@
                                 <div class="col-md-12">
                                     <table class="table table-bordered">
                                         <thead class="card-header card-header-primary">
+
                                             <tr>
                                                 <th scope="col">S.No</th>
                                                 <th scope="col">Roll#</th>
@@ -109,12 +120,14 @@
                                                 <th scope="col">Presence</th>
                                                 <th></th>
                                             </tr>
+
                                         </thead>
                                         <tbody>
 
                                             <tr>
+
                                                 <td>1</td>
-                                                <td>k16-3864</td>
+                                                <td>K16-3864</td>
                                                 <td>Mina Syed</td>
                                                 <td>
                                                     <select class="form-control">
@@ -126,27 +139,28 @@
                                                     </select>
                                                 </td>
                                                 <td></td>
+
                                             </tr>
                                             <tr>
 
                                                 <td>2</td>
-                                                <td>k16-3881</td>
+                                                <td>K16-3881</td>
                                                 <td>Rida Tariq</td>
                                                 <td>
                                                     <select class="form-control">
                                                         <option selected disabled hidden>Select</option>
                                                         <option>Absent</option>
                                                         <option>Present</option>
-                                                        <option>Late</option>
-                                                        
+                                                        <option>Late</option>                                                        
                                                     </select>
                                                 </td>
                                                 <td></td>
 
                                             </tr>
                                             <tr>
+
                                                 <td>3</td>
-                                                <td>k16-3906</td>
+                                                <td>K16-3906</td>
                                                 <td>Yousuf Jusani</td>
                                                 <td>
                                                     <select class="form-control">
@@ -160,6 +174,7 @@
                                                 <td></td>
                                                 
                                             </tr>
+
                                         </tbody>
                                     </table>
                                 </div>

@@ -11,12 +11,17 @@ namespace IptProject.Controllers.Attendance
         // GET: AttendanceTeacher
         public ActionResult MarkAttendance()
         {
+
+
             return View();
         }
 
         public ActionResult AddAttendance()
         {
             return View();
+            //
+
+
         }
 
         public ActionResult EditAttendance()
