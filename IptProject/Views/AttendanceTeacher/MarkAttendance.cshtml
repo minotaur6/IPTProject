@@ -78,7 +78,7 @@
                                         <label>Section</label>
                                         <select class="form-control ">
                                             <option selected hidden disabled>Select Section</option>
-                                            @*@foreach (var item in Model.sections)
+                                            @foreach (var item in Model.sections)
                                              {
                                                 if (item.SectionID != 0)
                                                 {
@@ -86,7 +86,7 @@
 
                                                 }
 
-                                             }*@
+                                             }
                                         </select>
                                     </div>
                                 </div>
@@ -178,3 +178,36 @@
         </div>
     </div>
 </div>
+
+<script>
+    $(function () {
+        $("#courseSelected").change(function () {
+            var courseID = $("#courseSelected").children("option:selected").val();
+            var check = "";
+            if (OrganizationID != 0) {
+                check = $("#courseSelected").children("option:selected").html()
+            }
+
+            $.ajax({
+
+                url: 'https://localhost:44380/api/AttendanceTeacher/GetTeacherCourseSection/',
+                type: "get", //send it through get method
+                data: {
+                    courseID: courseID
+                },
+                crossDomain: true,
+                success: function (response) {
+                    alert("Task complete!");
+                    location.reload(true);
+                },
+                error: function (xhr, status, error) {
+                    location.reload(true);
+                }
+            });
+
+
+        });
+
+    });
+
+</script>

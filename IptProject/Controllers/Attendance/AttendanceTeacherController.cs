@@ -37,9 +37,12 @@ namespace IptProject.Controllers.Attendance
                 client.DefaultRequestHeaders.Clear();
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
+                //HTTP GET teacher name
                 HttpResponseMessage result0 = await client.GetAsync("AttendanceTeacher/GetTeacherName/" + empId);
-                //HTTP GET
+                //HTTP GET course
                 HttpResponseMessage result = await client.GetAsync("AttendanceTeacher/GetTeacherCourses/" + empId);
+                //HTTP GET section
+                HttpResponseMessage result3 = await client.GetAsync("AttendanceTeacher/GetTeacherCourseSection/" + empId);
 
                 //HttpResponseMessage result2 = await client.GetAsync("AttendanceStudent/GetStudentAttendance/" + courseid);
                 if (result0.IsSuccessStatusCode)
@@ -57,6 +60,12 @@ namespace IptProject.Controllers.Attendance
                     courses = JsonConvert.DeserializeObject<List<Course>>(response);
                 }
 
+                if (result3.IsSuccessStatusCode)
+                {
+                    var response = result.Content.ReadAsStringAsync().Result;
+                    sections = JsonConvert.DeserializeObject<List<Section>>(response);
+                }
+
                 /*if (result2.IsSuccessStatusCode)
                 {
                     var response = result2.Content.ReadAsStringAsync().Result;
@@ -67,6 +76,7 @@ namespace IptProject.Controllers.Attendance
                 markAttendanceVM.EmpName = employee.EmpName;
                 markAttendanceVM.employees = employees;
                 markAttendanceVM.courses = courses;
+                markAttendanceVM.sections = sections;
 
                 //courseVM.studentcourseattendances = studentCourseAttendances;
                 //studentCourseAttendance.CourseCode = checkAttendance;
