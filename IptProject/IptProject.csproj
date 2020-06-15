@@ -152,6 +152,7 @@
     <Compile Include="Models\Attendance\Designation.cs" />
     <Compile Include="Models\Attendance\Employee.cs" />
     <Compile Include="Models\Attendance\FacultySections.cs" />
+    <Compile Include="Models\Attendance\MarkAttendanceVM.cs" />
     <Compile Include="Models\Attendance\Section.cs" />
     <Compile Include="Models\Attendance\Semester.cs" />
     <Compile Include="Models\Attendance\Student.cs" />

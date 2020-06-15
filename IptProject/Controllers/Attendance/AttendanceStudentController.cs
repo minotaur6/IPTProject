@@ -23,7 +23,7 @@ namespace IptProject.Controllers.Attendance
             CoursesVM courseVM = new CoursesVM();
             using (var client = new HttpClient())
             {
-                int studentId = 10;
+                int studentId = 10; // student login id
                 int courseid = 27; //pass student's course id
 
                 client.BaseAddress = new Uri("https://localhost:44380/api/");
@@ -32,6 +32,8 @@ namespace IptProject.Controllers.Attendance
 
                 //HTTP GET
                 HttpResponseMessage result = await client.GetAsync("AttendanceStudent/GetStudentCourse/" + studentId);
+
+                //karna hai sahi
                 HttpResponseMessage result2 = await client.GetAsync("AttendanceStudent/GetStudentAttendance/" + courseid);
 
                 if (result.IsSuccessStatusCode)
