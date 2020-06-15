@@ -12,6 +12,7 @@
     <div class="container-fluid">
         <div class="row">
 
+
             <div class="col-lg-12 col-md-12">
                 <div class="card">
                     <!-- Card header: all courses name come here -->
@@ -63,7 +64,8 @@
                                             {
                                                 <tr>
                                                     <td>
-                                                        
+                                                
+                                                        @Html.DisplayFor(modelItem => item.AttendanceID)
                                                     </td>
                                                     <td>
                                                         @Html.DisplayFor(modelItem => item.AttendanceDate)

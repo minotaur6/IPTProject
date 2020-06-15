@@ -17,7 +17,8 @@ namespace IptProject.Controllers.Attendance
         public async Task<ActionResult> ViewAttendance()
         {
             List<AllStudentCourses> checkAttendance = new List<AllStudentCourses>();
-            List<StudentCoursesAttendance> studentCourseAttendances = new List<StudentCoursesAttendance>();
+            List<StudentCoursesAttendance> studentCourseAttendances = new List<StudentCoursesAttendance>().OrderBy(x => x.AttendanceID).ToList();
+
 
             //StudentCourseAttendance studentCourseAttendance = new StudentCourseAttendance();
             CoursesVM courseVM = new CoursesVM();
