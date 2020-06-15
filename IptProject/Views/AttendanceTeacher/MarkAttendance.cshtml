@@ -68,8 +68,19 @@
                                     <div class="form-group">
                                         <label>Semester</label>
                                         <select class="form-control">
-                                            <option>Spring 2020</option>
-                                            <option>Fall 2019</option>
+                                            
+                                                <option selected hidden disabled>Select Course</option>
+                                                @foreach (var item in Model.semesters)
+                                                {
+                                                    
+                                                        <option value="@item.SemesterID">@item.SemesterName</option>
+
+                                                    
+
+                                                }
+                                          
+                                            @*<option>Spring 2020</option>
+        <option>Fall 2019</option>*@
                                         </select>
                                     </div>
                                 </div>

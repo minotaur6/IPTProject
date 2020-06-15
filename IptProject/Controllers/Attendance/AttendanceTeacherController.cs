@@ -36,10 +36,11 @@ namespace IptProject.Controllers.Attendance
                 client.BaseAddress = new Uri("https://localhost:44380/api/");
                 client.DefaultRequestHeaders.Clear();
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-
-                HttpResponseMessage result0 = await client.GetAsync("AttendanceTeacher/GetTeacherName/" + empId);
+                
                 //HTTP GET
+                HttpResponseMessage result0 = await client.GetAsync("AttendanceTeacher/GetTeacherName/" + empId);
                 HttpResponseMessage result = await client.GetAsync("AttendanceTeacher/GetTeacherCourses/" + empId);
+                HttpResponseMessage result2 = await client.GetAsync("AttendanceTeacher/GetSemester/" + empId);
 
                 //HttpResponseMessage result2 = await client.GetAsync("AttendanceStudent/GetStudentAttendance/" + courseid);
                 if (result0.IsSuccessStatusCode)
@@ -56,6 +57,11 @@ namespace IptProject.Controllers.Attendance
                     var response = result.Content.ReadAsStringAsync().Result;                   
                     courses = JsonConvert.DeserializeObject<List<Course>>(response);
                 }
+                if (result2.IsSuccessStatusCode)
+                {
+                    var response2 = result2.Content.ReadAsStringAsync().Result;
+                    semesters = JsonConvert.DeserializeObject<List<Semester>>(response2);
+                }
 
                 /*if (result2.IsSuccessStatusCode)
                 {
@@ -67,6 +73,7 @@ namespace IptProject.Controllers.Attendance
                 markAttendanceVM.EmpName = employee.EmpName;
                 markAttendanceVM.employees = employees;
                 markAttendanceVM.courses = courses;
+                markAttendanceVM.semesters = semesters;
 
                 //courseVM.studentcourseattendances = studentCourseAttendances;
                 //studentCourseAttendance.CourseCode = checkAttendance;
