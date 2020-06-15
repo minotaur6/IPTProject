@@ -16,6 +16,9 @@ namespace IptProject.Controllers.Attendance
         // GET: AttendanceTeacher
         public async System.Threading.Tasks.Task<ActionResult> MarkAttendance()
         {
+            string emp ="" ;
+            Employee employee = new Employee(); 
+            List<Employee> employees = new List<Employee>();
             List<Course> courses = new List<Course>();
             List<Section> sections = new List<Section>();
             List<Semester> semesters = new List<Semester>();
@@ -34,11 +37,20 @@ namespace IptProject.Controllers.Attendance
                 client.DefaultRequestHeaders.Clear();
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
+                HttpResponseMessage result0 = await client.GetAsync("AttendanceTeacher/GetTeacherName/" + empId);
                 //HTTP GET
                 HttpResponseMessage result = await client.GetAsync("AttendanceTeacher/GetTeacherCourses/" + empId);
 
                 //HttpResponseMessage result2 = await client.GetAsync("AttendanceStudent/GetStudentAttendance/" + courseid);
+                if (result0.IsSuccessStatusCode)
+                {
+                    var response0 = result0.Content.ReadAsStringAsync().Result;
+                    employees = JsonConvert.DeserializeObject<List<Employee>>(response0);
+                    //employee.EmpName = JsonConvert.DeserializeObject<string>(response0).ToString();
+                   // emp = JsonConvert.DeserializeObject<string>(response0).ToString();
 
+
+                }
                 if (result.IsSuccessStatusCode)
                 {
                     var response = result.Content.ReadAsStringAsync().Result;                   
@@ -51,8 +63,11 @@ namespace IptProject.Controllers.Attendance
                     // var re = r.Content.ReadAsStringAsync().Result;
                     studentCourseAttendances = JsonConvert.DeserializeObject<List<StudentCoursesAttendance>>(response);
                 }*/
-
+                markAttendanceVM.EmpName = emp.ToString();
+                markAttendanceVM.EmpName = employee.EmpName;
+                markAttendanceVM.employees = employees;
                 markAttendanceVM.courses = courses;
+
                 //courseVM.studentcourseattendances = studentCourseAttendances;
                 //studentCourseAttendance.CourseCode = checkAttendance;
 

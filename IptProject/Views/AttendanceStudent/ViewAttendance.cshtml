@@ -57,15 +57,23 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach (var item in Model.studentcourseattendances)
+                                        @{
+
+                                            int i = 0;
+
+                                        foreach (var item in Model.studentcourseattendances)
                                         {
-                                            int i;
+
+
+
                                             @*@for (int i = 0; i < Model.Count(); i++)*@
-                                            {
+                                        {
                                                 <tr>
+
                                                     <td>
-                                                
-                                                        @Html.DisplayFor(modelItem => item.AttendanceID)
+
+                                                        @*@Html.DisplayFor(x => x.studentcourseattendances.Count)*@
+                                                        @(i+1)
                                                     </td>
                                                     <td>
                                                         @Html.DisplayFor(modelItem => item.AttendanceDate)
@@ -78,10 +86,12 @@
                                                     </td>
 
                                                 </tr>
+
+                                                i++;
                                             }
 
                                         }
-
+                                            }
                                     </tbody>
                                 </table>
                             </div>

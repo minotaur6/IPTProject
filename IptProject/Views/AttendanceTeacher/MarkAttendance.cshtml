@@ -21,7 +21,19 @@
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label>Teacher Name</label>
-                                        <input class="form-control" type="text" placeholder="Teacher Name" readonly>
+
+
+                                        @foreach (var item in Model.employees)
+                                        {
+                                    
+                                            <input class="form-control" type="text" placeholder="@item.EmpName" disabled>
+                                            
+                                        }
+
+
+
+
+
                                     </div>
                                 </div>
                                 <div class="col-md-8">
@@ -66,7 +78,7 @@
                                         <label>Section</label>
                                         <select class="form-control ">
                                             <option selected hidden disabled>Select Section</option>
-                                            @foreach (var item in Model.sections)
+                                            @*@foreach (var item in Model.sections)
                                              {
                                                 if (item.SectionID != 0)
                                                 {
@@ -74,7 +86,7 @@
 
                                                 }
 
-                                             }
+                                             }*@
                                         </select>
                                     </div>
                                 </div>
