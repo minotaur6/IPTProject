@@ -16,8 +16,7 @@ namespace IptProject.Controllers.Attendance
         // GET: AttendanceTeacher
         public async System.Threading.Tasks.Task<ActionResult> MarkAttendance()
         {
-            string emp ="" ;
-            Employee employee = new Employee(); 
+
             List<Employee> employees = new List<Employee>();
             List<Course> courses = new List<Course>();
             List<Section> sections = new List<Section>();
@@ -37,20 +36,20 @@ namespace IptProject.Controllers.Attendance
                 client.DefaultRequestHeaders.Clear();
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
                 
-                //HTTP GET
+                //HTTP GET teacher name
                 HttpResponseMessage result0 = await client.GetAsync("AttendanceTeacher/GetTeacherName/" + empId);
+                //HTTP GET course
                 HttpResponseMessage result = await client.GetAsync("AttendanceTeacher/GetTeacherCourses/" + empId);
-                HttpResponseMessage result2 = await client.GetAsync("AttendanceTeacher/GetSemester/" + empId);
-
+                //HTTP GET semester
+                HttpResponseMessage result2 = await client.GetAsync("AttendanceTeacher/GetTeacherSemester/" + empId);
+                //HTTP GET section
                 //HttpResponseMessage result2 = await client.GetAsync("AttendanceStudent/GetStudentAttendance/" + courseid);
+
                 if (result0.IsSuccessStatusCode)
                 {
-                    var response0 = result0.Content.ReadAsStringAsync().Result;
-                    employees = JsonConvert.DeserializeObject<List<Employee>>(response0);
-                    //employee.EmpName = JsonConvert.DeserializeObject<string>(response0).ToString();
-                   // emp = JsonConvert.DeserializeObject<string>(response0).ToString();
-
-
+                    var response = result0.Content.ReadAsStringAsync().Result;
+                    employees = JsonConvert.DeserializeObject<List<Employee>>(response);
+                    
                 }
                 if (result.IsSuccessStatusCode)
                 {
@@ -59,8 +58,8 @@ namespace IptProject.Controllers.Attendance
                 }
                 if (result2.IsSuccessStatusCode)
                 {
-                    var response2 = result2.Content.ReadAsStringAsync().Result;
-                    semesters = JsonConvert.DeserializeObject<List<Semester>>(response2);
+                    var response = result2.Content.ReadAsStringAsync().Result;
+                    semesters = JsonConvert.DeserializeObject<List<Semester>>(response);
                 }
 
                 /*if (result2.IsSuccessStatusCode)
@@ -69,14 +68,14 @@ namespace IptProject.Controllers.Attendance
                     // var re = r.Content.ReadAsStringAsync().Result;
                     studentCourseAttendances = JsonConvert.DeserializeObject<List<StudentCoursesAttendance>>(response);
                 }*/
-                markAttendanceVM.EmpName = emp.ToString();
-                markAttendanceVM.EmpName = employee.EmpName;
+
+
                 markAttendanceVM.employees = employees;
                 markAttendanceVM.courses = courses;
                 markAttendanceVM.semesters = semesters;
+                markAttendanceVM.sections = sections;
 
-                //courseVM.studentcourseattendances = studentCourseAttendances;
-                //studentCourseAttendance.CourseCode = checkAttendance;
+               
 
                 return View(markAttendanceVM);
             }
@@ -85,11 +84,50 @@ namespace IptProject.Controllers.Attendance
        
         }
 
-        public ActionResult AddAttendance()
+        public async System.Threading.Tasks.Task<ActionResult> AddAttendance()
         {
-            return View();
-            //
+            AddAttendanceVM addAttendanceVM = new AddAttendanceVM();
 
+            List<Student> students = new List<Student>();
+
+
+
+
+            using (var client = new HttpClient())
+            {
+                int empId = 11; // teacher login id
+                //int courseid = 7; //pass student's course id
+
+                client.BaseAddress = new Uri("https://localhost:44380/api/");
+                client.DefaultRequestHeaders.Clear();
+                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+
+                
+                //HTTP GET course
+                HttpResponseMessage result = await client.GetAsync("AttendanceTeacher/GetTeacherStudents/" + empId);
+                
+                if (result.IsSuccessStatusCode)
+                {
+                    var response = result.Content.ReadAsStringAsync().Result;
+                    students = JsonConvert.DeserializeObject<List<Student>>(response);
+                }
+               
+
+                /*if (result2.IsSuccessStatusCode)
+                {
+                    var response = result2.Content.ReadAsStringAsync().Result;
+                    // var re = r.Content.ReadAsStringAsync().Result;
+                    studentCourseAttendances = JsonConvert.DeserializeObject<List<StudentCoursesAttendance>>(response);
+                }*/
+
+
+                addAttendanceVM.students = students;
+                
+
+
+
+                return View(addAttendanceVM);
+            }
 
         }
 
