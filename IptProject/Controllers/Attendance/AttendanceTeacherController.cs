@@ -42,6 +42,7 @@ namespace IptProject.Controllers.Attendance
                 HttpResponseMessage result = await client.GetAsync("AttendanceTeacher/GetTeacherCourses/" + empId);
                 //HTTP GET semester
                 HttpResponseMessage result2 = await client.GetAsync("AttendanceTeacher/GetTeacherSemester/" + empId);
+
                 //HTTP GET section
                 //HttpResponseMessage result2 = await client.GetAsync("AttendanceStudent/GetStudentAttendance/" + courseid);
 

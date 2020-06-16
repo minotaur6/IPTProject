@@ -69,7 +69,7 @@
                                         <label>Semester</label>
                                         <select class="form-control">
                                             
-                                                <option selected hidden disabled>Select Course</option>
+                                                <option selected hidden disabled>Select Semester</option>
                                                 @foreach (var item in Model.semesters)
                                                 {
                                                     
@@ -178,32 +178,44 @@
     </div>
 </div>
 
+
+
 <script>
     $(function () {
         $("#courseSelected").change(function () {
             var courseID = $("#courseSelected").children("option:selected").val();
             var check = "";
-            if (OrganizationID != 0) {
+            debugger
+            if (courseID != 0) {
                 check = $("#courseSelected").children("option:selected").html()
             }
 
-            $.ajax({
+          
+                $.get('https://localhost:44380/api/AttendanceTeacher/GetTeacherSections/'+ courseID, function(data, status){
+                    alert("Data: " + data + "\nStatus: " + status);
+                });
+           
 
-                url: 'https://localhost:44380/api/AttendanceTeacher/GetTeacherCourseSection/',
+           /* $.ajax({
+
+                url: 'https://localhost:44380/api/AttendanceTeacher/GetTeacherSection/'+ courseID,
                 type: "get", //send it through get method
-                data: {
+                *//*data: {
                     courseID: courseID
-                },
+                },*//*
                 crossDomain: true,
                 success: function (response) {
                     alert("Task complete!");
                     location.reload(true);
                 },
-                error: function (xhr, status, error) {
-                    location.reload(true);
+                error: function (xhr, status, error, response) {
+                    alert(response);
+                    //location.reload(true);
                 }
-            });
-
+            }).done(function () {
+                            alert("DOne");
+                        });
+*/
 
         });
 
