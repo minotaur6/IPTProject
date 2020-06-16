@@ -139,6 +139,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Attendance\AddAttendanceVM.cs" />
     <Compile Include="Models\Attendance\AllStudentCourses.cs" />
     <Compile Include="Models\Attendance\Attendance.cs" />
     <Compile Include="Models\Attendance\Batch.cs" />
