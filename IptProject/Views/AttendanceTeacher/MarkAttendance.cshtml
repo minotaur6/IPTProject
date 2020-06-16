@@ -19,9 +19,8 @@
                         <form>
                             <div class="row">
                                 <div class="col-md-4">
-                                    <div class="form-group">
+                                    <div class="form-group" id="Teacher">
                                         <label>Teacher Name</label>
-
 
                                         @foreach (var item in Model.employees)
                                         {
@@ -29,11 +28,6 @@
                                             <input class="form-control" type="text" placeholder="@item.EmpName" disabled>
                                             
                                         }
-
-
-
-
-
                                     </div>
                                 </div>
                                 <div class="col-md-8">
@@ -67,20 +61,15 @@
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label>Semester</label>
-                                        <select class="form-control">
+                                        <select class="form-control" id="SemesterSelected">
                                             
                                                 <option selected hidden disabled>Select Course</option>
                                                 @foreach (var item in Model.semesters)
                                                 {
                                                     
-                                                        <option value="@item.SemesterID">@item.SemesterName</option>
-
-                                                    
+                                                        <option value="@item.SemesterID">@item.SemesterName</option>             
 
                                                 }
-                                          
-                                            @*<option>Spring 2020</option>
-        <option>Fall 2019</option>*@
                                         </select>
                                     </div>
                                 </div>
