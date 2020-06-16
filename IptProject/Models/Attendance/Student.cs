@@ -11,6 +11,8 @@ namespace IptProject.Models.Attendance
         public string SName { get; set; }
         public string RollNumber { get; set; }
 
+        public int EnrollmentID { get; set; }
+
         //public string Email { get; set; }
         //public string MobileNumber { get; set; }
         //public int CandidateID { get; set; }

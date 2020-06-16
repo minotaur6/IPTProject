@@ -141,6 +141,7 @@
     </Compile>
     <Compile Include="Models\Attendance\AddAttendanceVM.cs" />
     <Compile Include="Models\Attendance\AllStudentCourses.cs" />
+    <Compile Include="Models\Attendance\Attend.cs" />
     <Compile Include="Models\Attendance\Attendance.cs" />
     <Compile Include="Models\Attendance\Batch.cs" />
     <Compile Include="Models\Attendance\CheckStudentAttendance.cs" />
@@ -149,6 +150,7 @@
     <Compile Include="Models\Attendance\CourseFaculty.cs" />
     <Compile Include="Models\Attendance\CourseOffered.cs" />
     <Compile Include="Models\Attendance\CoursesVM.cs" />
+    <Compile Include="Models\Attendance\DataVM.cs" />
     <Compile Include="Models\Attendance\Department.cs" />
     <Compile Include="Models\Attendance\Designation.cs" />
     <Compile Include="Models\Attendance\Employee.cs" />
@@ -160,7 +162,9 @@
     <Compile Include="Models\Attendance\StudentCoursesAttendance.cs" />
     <Compile Include="Models\Attendance\TeacherAttendanceDetails.cs" />
     <Compile Include="Models\Attendance\TeacherCourseSectionDetail.cs" />
+    <Compile Include="Models\Attendance\TeacherData.cs" />
     <Compile Include="Models\Cafeteria\FoodItem.cs" />
+    <Compile Include="Models\Attendance\SectionVM.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -433,6 +437,7 @@
     <Content Include="Views\AttendanceTeacher\MarkAttendance.cshtml" />
     <Content Include="Views\AttendanceTeacher\AddAttendance.cshtml" />
     <Content Include="Views\AttendanceTeacher\EditAttendance.cshtml" />
+    <Content Include="Views\AttendanceTeacher\ChooseSection.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

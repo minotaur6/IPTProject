@@ -1,0 +1,117 @@
+﻿@model IptProject.Models.Attendance.SectionVM
+@{
+    ViewBag.Title = "ChooseSection";
+    Layout = "~/Views/Shared/_PortalLayout.cshtml";
+}
+
+<h2>ChooseSection</h2>
+<div class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header card-header-primary">
+                        <h4 class="card-title">Manage Attendance</h4>
+                    </div>
+                    <div class="card-body">
+                        @using (Html.BeginForm("ChooseSection", "AttendanceTeacher", FormMethod.Post))
+                                    {
+                                        @Html.AntiForgeryToken()
+
+                        <div class="row">
+                            <div class="col-md-4" hidden>
+                                <div class="form-group">
+                                    <label>Name</label>
+
+                                    <input type="text" value="@Model.EmpName" name="EmpName" />
+                                </div>
+                            </div>
+                            <div class="col-md-4" hidden>
+                                <div class="form-group">
+                                    <label>Course</label>
+
+                                    <input type="text" value="@Model.CourseID" name="CourseID" />
+                                </div>
+                            </div>
+
+                          
+
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label>Section</label>
+
+                                    <select class="form-control" name="SectionName" id="SectionName">
+
+                                        <option selected hidden disabled>Select Section</option>
+                                        @for (int i = 0; i < Model.sections.Count; i++)
+                                        {
+                                            var item = Model.sections[i];
+                                            <option value="@item.SectionName"> @item.SectionName </option>
+                                        }
+
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                                        <div class="row">
+                                            <div class="col-md-12 ">
+                                                <input type = "submit" value="Save" />
+                                            </div>
+                                        </div>
+                                    }
+
+                                    <form>
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <table class="table table-bordered">
+                                                    <thead class="card-header card-header-primary">
+                                                        <tr>
+                                                            <th scope = "col" > S.No </ th >
+                                                            < th scope="col">Date</th>
+                    @*<th scope="col">Edit</th>*@
+                                                                    <th scope = "col" > Delete </ th >
+                                                                    < th ></ th >
+                                                                </ tr >
+                                                            </ thead >
+                                                            < tbody >
+                                                                < tr >
+                                                                    < td > 1 </ td >
+                                                                    < td > 2020 - 06 - 14 </ td >
+                    @*<td><button type="submit" class="btn btn-primary pull-right">Edit</button></td>*@
+                    < td >
+                        < button type="submit" class="btn btn-danger pull-right">Delete</button>
+                    </td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>2020-06-15</td>
+                    @*<td><button type="submit" class="btn btn-primary pull-right">Edit</button></td>*@
+                                                                    <td>
+                                                                        <button type = "submit" class="btn btn-danger pull-right">Delete</button>
+                                                                    </td>
+                                                                    <td></td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td>3</td>
+                                                                    <td>2020-06-16</td>
+                    @*<td><button type="submit" class="btn btn-primary pull-right">Edit</button></td>*@
+                        <td>
+                            <button type="submit" class="btn btn-danger pull-right">Delete</button>
+                        </td>
+                        <td></td>
+                        </tr>
+                        </tbody>
+                        </table>
+                    </div>
+                            </div>
+
+                            <div class="clearfix"></div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

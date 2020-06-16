@@ -8,5 +8,14 @@ namespace IptProject.Models.Attendance
     public class AddAttendanceVM
     {
         public List<Student> students { get; set; }
+
+        public string EmpName { get; set; }
+        public string CourseID { get; set; }
+
+        public string SectionName { get; set; }
+
+        public DateTime AttendanceDate { get; set; }
+        public string AttendanceStatus { get; set; }
+        public int ClassDuration { get; set; }
     }
 }
