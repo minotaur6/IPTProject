@@ -13,6 +13,8 @@ namespace IptProject.Models.Attendance
         public List<Section> sections { get; set; }
 
         public List<Semester> semesters { get; set; }
+        public string SerialNo { get; set; }
 
+        public DateTime Date { get; set; }
     }
 }

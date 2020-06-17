@@ -17,14 +17,13 @@
                     </div>
                     <div class="card-body">
                         @*<form id="formteacherdata">*@
-                          @using (Html.BeginForm())
-                          {
-                              @Html.AntiForgeryToken()
+                        @using (Html.BeginForm())
+                        {
+                            @Html.AntiForgeryToken()
                             <div class="row">
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label>Teacher Name</label>
-
 
                                         @foreach (var item in Model.employees)
                                         {
@@ -32,11 +31,6 @@
                                             @*<input class="form-control" type="text" placeholder="@item.EmpName" value="@item.EmpName" disabled id="TeacherName">*@
 
                                         }
-
-
-
-
-
                                     </div>
                                 </div>
                                 <div class="col-md-8">
@@ -81,46 +75,42 @@
 
                                                 <option value="@item.SemesterID">@item.SemesterName</option>
 
-
-
                                             }
-
                                         </select>
                                     </div>
                                 </div>
                                 @*<div class="col-md-4">
-                                    <div class="form-group">
-                                        <label>Section</label>
-                                        <select class="form-control " id="sectionSelected">
-                                            <option selected hidden disabled>Select Section</option>
-                                            @foreach (var item in Model.sections)
-                                            {
-                                                if (item.SectionID != 0)
+                                        <div class="form-group">
+                                            <label>Section</label>
+                                            <select class="form-control " id="sectionSelected">
+                                                <option selected hidden disabled>Select Section</option>
+                                                @foreach (var item in Model.sections)
                                                 {
-                                                    <option value="@item.SectionID">@item.SectionName</option>
+                                                    if (item.SectionID != 0)
+                                                    {
+                                                        <option value="@item.SectionID">@item.SectionName</option>
+
+                                                    }
 
                                                 }
-
-                                            }
-                                        </select>
-                                    </div>
-                                </div>*@
+                                            </select>
+                                        </div>
+                                    </div>*@
                             </div>
 
                             <div class="row">
                                 <div class="col-md-12 ">
 
                                     @*<div class="col-lg-12">
-            <input id="addButton" type="submit" />
-        </div>*@
+                                            <input id="addButton" type="submit" />
+                                        </div>*@
 
                                     @*@Html.ActionLink("Add New", "AddAttendance", new { }, new { @class = "btn btn-success pull-right" })*@
 
                                     @*<button type="submit" class="btn btn-success pull-right">Add New</button>
 
-        <input type="submit" value="Create" class="btn btn-success pull-right" />*@
-                                    <input type="submit" value="Choose Section"  />
-
+                                        <input type="submit" value="Create" class="btn btn-success pull-right" />*@
+                                    <input type="submit" value="Choose Section" />
 
                                     @*<button type="submit" class="btn btn-primary pull-right">Edit</button>*@
                                 </div>
@@ -139,10 +129,12 @@
                                     </div>
                                 </div>
                             *@
-                          }
+                        }
                         @*</form>*@
 
-                        <form>
+                        @using (Html.BeginForm("DeleteAttendance", "AttendanceTeacher", FormMethod.Post))
+                        {
+                            @Html.AntiForgeryToken()
                             <div class="row">
                                 <div class="col-md-12">
                                     <table class="table table-bordered">
@@ -158,28 +150,28 @@
                                         <tbody>
                                             <tr>
                                                 <td>1</td>
-                                                <td>2020-06-14</td>
+                                                <td><input class="form-control" type="date" name="Date" id="Date"></td>
                                                 @*<td><button type="submit" class="btn btn-primary pull-right">Edit</button></td>*@
                                                 <td>
-                                                    <button type="submit" class="btn btn-danger pull-right">Delete</button>
+                                                    <input type="submit" class="btn btn-danger pull-right" value="Delete" />
                                                 </td>
                                                 <td></td>
                                             </tr>
                                             <tr>
                                                 <td>2</td>
-                                                <td>2020-06-15</td>
+                                                <td><input class="form-control" type="date" name="Date" id="Date"></td>
                                                 @*<td><button type="submit" class="btn btn-primary pull-right">Edit</button></td>*@
                                                 <td>
-                                                    <button type="submit" class="btn btn-danger pull-right">Delete</button>
+                                                    <input type="submit" class="btn btn-danger pull-right" value="Delete" />
                                                 </td>
                                                 <td></td>
                                             </tr>
                                             <tr>
                                                 <td>3</td>
-                                                <td>2020-06-16</td>
+                                                <td><input class="form-control" type="date" name="Date" id="Date"></td>
                                                 @*<td><button type="submit" class="btn btn-primary pull-right">Edit</button></td>*@
                                                 <td>
-                                                    <button type="submit" class="btn btn-danger pull-right">Delete</button>
+                                                    <input type="submit" class="btn btn-danger pull-right" value="Delete" />
                                                 </td>
                                                 <td></td>
                                             </tr>
@@ -189,7 +181,7 @@
                             </div>
 
                             <div class="clearfix"></div>
-                        </form>
+                        }
                     </div>
                 </div>
             </div>
@@ -205,24 +197,24 @@
             var courseID = $("#courseSelected").children("option:selected").val();
             debugger
             var courseName = "";
-            if (courseID != 0) {              
+            if (courseID != 0) {
                 courseName = $("#courseSelected").children("option:selected").html()
             }
             //section
             var sectionID = $("#sectionSelected").children("option:selected").val();
             debugger
             var SectionName = "";
-            if (sectionID != 0) {               
+            if (sectionID != 0) {
                 SectionName = $("#sectionSelected").children("option:selected").html()
             }
             //semester
             var semesterID = $("#semesterSelected").children("option:selected").val();
             debugger
             var semesterName = "";
-            if (semesterID != 0) {               
+            if (semesterID != 0) {
                 semesterName = $("#semesterSelected").children("option:selected").html()
             }
-           
+
             $.ajax
                 ({
                     type: 'POST',
@@ -231,7 +223,7 @@
 
                         EmpID: 11,
                         TeacherName: $("#TeacherName").val(),
-                        courseID: courseID,                        
+                        courseID: courseID,
                         sectionID: sectionID,
                         semesterID: semesterID
                     },
@@ -253,8 +245,6 @@
     });
 </script>
 
-
-
 <script>
     $(function () {
         $("#courseSelected").change(function () {
@@ -265,35 +255,32 @@
                 check = $("#courseSelected").children("option:selected").html()
             }
 
-
             $.get('https://localhost:44380/api/AttendanceTeacher/GetTeacherSections/7', function (data, status) {
                 alert("Data: " + data + "\nStatus: " + status);
             });
-
 
             /* $.ajax({
 
                  url: 'https://localhost:44380/api/AttendanceTeacher/GetTeacherSection/'+ courseID,
                  type: "get", //send it through get method
                  *//*data: {
-                courseID: courseID
-            },*//*
-            crossDomain: true,
-            success: function (response) {
-                alert("Task complete!");
-                location.reload(true);
-            },
-            error: function (xhr, status, error, response) {
-                alert(response);
-                //location.reload(true);
-            }
-        }).done(function () {
-                        alert("DOne");
-                    });
-*/
+courseID: courseID
+},*//*
+                                                                                       crossDomain: true,
+                                                                                       success: function (response) {
+                                                                                           alert("Task complete!");
+                                                                                           location.reload(true);
+                                                                                       },
+                                                                                       error: function (xhr, status, error, response) {
+                                                                                           alert(response);
+                                                                                           //location.reload(true);
+                                                                                       }
+                                                                                   }).done(function () {
+                                                                                                   alert("DOne");
+                                                                                               });
+                                                                           */
 
         });
 
     });
-
 </script>
